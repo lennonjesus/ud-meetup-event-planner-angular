@@ -1,8 +1,8 @@
 describe('hello component', function () {
-  beforeEach(module('app', function ($provide) {
+  beforeEach(module('eventplanner', function ($provide) {
     $provide.factory('app', function () {
       return {
-        templateUrl: 'app/hello.html'
+        templateUrl: 'app/home/hello.html'
       };
     });
   }));
