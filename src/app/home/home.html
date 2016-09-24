@@ -1,0 +1,32 @@
+<div>
+  <form name="userForm">
+
+    <h2>Welcome to Event Planner</h2>
+
+    <div layout-gt-xs="row">
+
+      <md-input-container class="md-block md-icon-float" flex-gt-sm>
+        <label>E-mail</label>
+        <input ng-model="vm.user.email" ng-required="true">
+      </md-input-container>
+
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Password</label>
+        <input type="password" ng-model="vm.user.password" ng-required="true">
+      </md-input-container>
+
+      <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+        <md-button class="md-raised md-primary">
+          <md-icon class="material-icons">forward_next</md-icon>
+          Login
+        </md-button>
+        <md-button class="md-raised md-warn" ui-sref="signup">
+          <md-icon class="material-icons">person_add</md-icon>
+          Signup
+        </md-button>
+      </section>
+    </div>
+
+  </form>
+
+</div>

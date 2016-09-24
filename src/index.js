@@ -1,2 +1,4 @@
+'use strict';
+
 angular
-  .module('eventplanner', ['ui.router']);
+  .module('eventplanner', ['ui.router', 'ngMaterial']);

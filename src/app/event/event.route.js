@@ -8,10 +8,10 @@ angular
 function routesConfig($stateProvider) {
 
   $stateProvider
-    .state('signup', {
-      url: '/signup',
-      templateUrl: 'app/signup/signup.html',
-      controller: 'Signup',
+    .state('event', {
+      url: '/event',
+      templateUrl: 'app/event/event.form.html',
+      controller: 'EventCreate',
       controllerAs: 'vm'
     });
 }

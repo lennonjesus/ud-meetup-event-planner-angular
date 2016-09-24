@@ -6,12 +6,11 @@ angular
 
 /** @ngInject */
 function routesConfig($stateProvider) {
-
   $stateProvider
-    .state('signup', {
-      url: '/signup',
-      templateUrl: 'app/signup/signup.html',
-      controller: 'Signup',
+    .state('home', {
+      url: '/',
+      templateUrl: 'app/home/home.html',
+      controller: 'Home',
       controllerAs: 'vm'
     });
 }

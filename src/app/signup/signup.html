@@ -1,242 +1,43 @@
-<!-- Create Account -->
-<div class="well" id="accountCreatePanel" hidden="hidden">
+<div>
+  <form name="userForm">
 
-  <div class="alert alert-dismissible alert-success" id="accountCreationSuccessAlert" hidden>
-    <button type="button" class="close" data-dismiss="alert">×</button>
-    <strong>Success!</strong> Your account hass been created.
-  </div>
+    <div layout-gt-xs="row">
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Name</label>
+        <input ng-model="vm.user.name" ng-required="true" autocomplete="name">
+        <div class="hint">Please, tell us your name</div>
+      </md-input-container>
 
-  <form class="form-horizontal" id="frmAccountCreate">
-    <fieldset>
-      <legend>
-        Account creation
-      </legend>
+      <md-input-container class="md-block md-icon-float" flex-gt-sm>
+        <label>E-mail</label>
+        <input type="email" ng-model="vm.user.email" ng-required="true" autocomplete="email">
+        <div class="hint">Ex: youemail@domain.com</div>
+      </md-input-container>
 
-      <div class="col-md-12 col-xs-12">
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Password</label>
+        <input type="password" ng-model="vm.user.password" ng-pattern="/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/" ng-required="true">
+        <div class="hint">Minimum 8 digits, with numbers and letters</div>
+      </md-input-container>
 
-        <div class="alert alert-danger" id="validationAlert" hidden="hidden">
-          <button type="button" class="close" data-dismiss="alert">×</button>
-          Please, review and correct the provided information.
-        </div>
+      <md-input-container class="md-block" flex-gt-sm>
+        <label ng-show="vm.user.password === vm.user.repassword">Retype password</label>
+        <label ng-hide="vm.user.password === vm.user.repassword" md-colors="{color: 'red'}">Retype password</label>
+        <input id="retypePass" type="password" ng-model="vm.user.repassword" ng-required="true">
+        <div class="hint">Please, confirm your password</div>
+      </md-input-container>
 
-        <div class="form-group label-floating">
-          <label class="control-label" for="inputName">Name</label>
-          <input class="form-control" id="inputName" type="text" required autocomplete="name">
-          <p class="help-block">Please, tell us your name</p>
-        </div>
+      <md-input-container class="md-block">
+        <label>About you</label>
+        <textarea id="aboutUser" ng-model="vm.user.about" md-maxlength="150" rows="4" md-select-on-focus></textarea>
+      </md-input-container>
 
-        <div class="form-group label-floating">
-          <label class="control-label" for="inputEmail">E-mail</label>
-          <input class="form-control" id="inputEmail" type="email" required autocomplete="email">
-          <p class="help-block">Ex: youemail@domain.com</p>
-        </div>
-
-        <div class="form-group label-floating">
-          <label class="control-label" for="inputPassword">Password</label>
-          <input class="form-control" id="inputPassword" type="password" required>
-          <p class="help-block">Minimum 8 digits, with numbers and letters</p>
-        </div>
-
-        <div class="form-group label-floating">
-          <label class="control-label" for="inputPasswordRetype">Retype password</label>
-          <input class="form-control" id="inputPasswordRetype" type="password" required>
-          <p class="help-block">Please, confirm your password</p>
-        </div>
-      </div>
-
-      <p>
-        &nbsp;
-      </p>
-
-      <div class="text-center">
-        <button type="submit" class="btn btn-raised btn-inverse btn-raised" id="btnCreateAccount">
-          Create
-          <i class="material-icons">save</i>
-        </button>
-
-      </div>
-
-    </fieldset>
-  </form>
-</div>
-<!-- End Create Account -->
-
-<!-- Create Event -->
-<div class="well" id="eventCreatePanel" hidden="hidden">
-
-  <div class="alert alert-dismissible alert-success" id="eventCreationSuccessAlert" hidden>
-    <button type="button" class="close" data-dismiss="alert">×</button>
-    <strong>Success!</strong> Your event hass been created.
-  </div>
-
-  <form class="form-horizontal" id="frmEventCreate">
-    <fieldset>
-      <legend>
-        Event creation
-      </legend>
-
-      <div class="col-md-12 col-xs-12">
-
-        <div class="alert alert-danger" id="eventValidationAlert" hidden="hidden">
-          <button type="button" class="close" data-dismiss="alert">×</button>
-          Please, review and correct the provided information.
-        </div>
-
-        <div class="form-group label-floating">
-          <label class="control-label" for="inputEventName">Event name</label>
-          <input class="form-control" id="inputEventName" type="text" required>
-          <p class="help-block">The name of your event</p>
-        </div>
-
-        <div class="form-group label-floating">
-          <label class="control-label" for="inputEventType">Type</label>
-          <input class="form-control" id="inputEventType" list="typeList" required>
-          <datalist id="typeList">"></option>
-            <option value="Birthday"></option>
-            <option value="Conference Talk"></option>
-            <option value="Party"></option>
-            <option value="Show"></option>
-            <option value="Wedding"></option>
-          </datalist>
-          <p class="help-block">Ex: birthday party, conference talk, wedding, etc.</p>
-        </div>
-
-        <div class="form-group label-floating">
-          <label class="control-label" for="inputEventHost">Host</label>
-          <input class="form-control" id="inputEventHost" type="text" required>
-          <p class="help-block">Who is the event host?</p>
-        </div>
-
-        <div class="form-group">
-          <label class="control-label" for="inputEventDateStart">Start</label>
-          <input class="form-control" id="inputEventDateStart" type="datetime-local" required>
-        </div>
-
-        <div class="form-group">
-          <label class="control-label" for="inputEventDateEnd">End (must be after the start) </label>
-          <input class="form-control" id="inputEventDateEnd" type="datetime-local" required>
-        </div>
-
-        <div class="form-group label-floating">
-          <label class="control-label" for="inputEventGuestName">Add guest</label>
-          <div class="input-group">
-            <input type="text" id="inputEventGuestName" class="form-control">
-            <p class="help-block">Type the name then use plus button to add to the guest list</p>
-            <span class="input-group-btn">
-              <button type="button" class="btn btn-primary btn-fab btn-fab-mini">
-                <i class="material-icons">add</i>
-              </button>
-            </span>
-
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="control-label">Guest list</label>
-          <div class="" id="eventGuestListContainer">
-            <!-- <span class="label label-info guest-entry">Lennon Jesus</span>
-            <span class="label label-info guest-entry">Carla Vidal Oliveira de Lima</span>
-            <span class="label label-info guest-entry">Marley</span>
-            <span class="label label-info guest-entry">Vera Alice de Azevedo Jesus</span> -->
-          </div>
-        </div>
-
-        <div class="form-group label-floating">
-          <label class="control-label" for="inputEventLocation">Location</label>
-          <input class="form-control" id="inputEventLocation" type="text" autocomplete="street-address" required>
-          <p class="help-block">The event address</p>
-        </div>
-
-        <div class="form-group label-floating">
-          <label for="textArea" class="control-label">Guest notification</label>
-
-          <div class="">
-            <textarea class="form-control" rows="3" id="inputEventGuestsNotification"></textarea>
-            <span class="help-block">Send a note to your guests, if you want</span>
-          </div>
-        </div>
-      </div>
-
-      <p>
-        &nbsp;
-      </p>
-
-      <div class="text-center">
-        <a href="javascript:void(0)" class="btn btn-raised btn-inverse" id="btnCreateEvent">
-          Create
-          <i class="material-icons">save</i>
-        </a>
-      </div>
-
-    </fieldset>
-  </form>
-</div>
-<!-- End Create Event -->
-
-<!-- List Events -->
-<div class="well well-lg" id="eventListPanel" >
-  <div class="panel panel-primary tplEvntPanel">
-    <div class="panel-heading">
-      <h3 class="panel-title"><i class="material-icons text-right">event</i>
-        <span id="tplEvntName">Encontro Regional 2016</span>
-      </h3>
-      <div class="text-right">
-        <span class="label label-success" id="tplEvntType">motorcycle</span>
-      </div>
+      <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+        <md-button class="md-raised md-primary">Create</md-button>
+        <md-button class="md-raised md-warn" ui-sref="home">Cancel</md-button>
+      </section>
     </div>
-    <div class="panel-body">
 
-      <div class="text-right">
-        <p class="text-muted">
-          Avenida das Palmeiras, 1290, Jardim Primavera, Duque de Caxias, RJ
-        </p>
-      </div>
+  </form>
 
-      <div class="text-right">
-        <p class="text-muted" id="tplEvntDate">
-          From Sep 10 2016 12:00 <br />
-          to Sep 15 2016 19:30
-        </p>
-      </div>
-
-      <hr />
-
-      <h5 id="tplEvntHost">Hosted by Lennon Jesus de Lima</h5>
-
-      <hr />
-
-      <h6>Guests</h6>
-
-      <div class="col-md-6 col-xs-6">
-          <span>Lennon Jesus</span>
-      </div>
-      <div class="col-md-6 col-xs-6">
-          <span>Lennon Jesus</span>
-      </div>
-      <div class="col-md-6 col-xs-6">
-          <span>Lennon Jesus</span>
-      </div>
-      <div class="col-md-6 col-xs-6">
-          <span>Lennon Jesus</span>
-      </div>
-
-      <hr />
-
-
-
-      <hr />
-
-      <div class="text-center">
-        <a href="https://www.google.com.br/maps/place/" target="_blank" class="btn btn-raised btn-warning" id="tplEvntAddressLocation">
-          <i class="material-icons">map</i>
-          Map
-        </a>
-      </div>
-
-      <hr />
-
-
-    </div>
-  </div>
 </div>
-<!-- End List Events -->

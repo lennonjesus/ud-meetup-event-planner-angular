@@ -1,0 +1,119 @@
+<div>
+  <form name="userForm">
+
+    <md-input-container class="md-block" flex-gt-sm>
+      <label>Name</label>
+      <input ng-model="vm.event.name" ng-required="true">
+      <div class="hint">The name of your event</div>
+    </md-input-container>
+
+    <md-input-container class="md-block" flex-gt-sm>
+      <label>Type</label>
+      <input id="eventType" list="typeList" ng-model="vm.event.type" ng-required="true">
+      <div class="hint">Ex: birthday party, conference talk, wedding, etc.</div>
+      <datalist id="typeList">
+        <option value="Birthday"></option>
+        <option value="Conference Talk"></option>
+        <option value="Party"></option>
+        <option value="Show"></option>
+        <option value="Wedding"></option>
+      </datalist>
+    </md-input-container>
+
+    <md-input-container class="md-block" flex-gt-sm>
+      <label>Host</label>
+      <input id="eventHost" ng-model="vm.event.type.value" ng-required="true">
+      <div class="hint">Who is the event host?</div>
+    </md-input-container>
+
+    <div layout="row" flex>
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Start date</label>
+        <md-datepicker id="eventStartDate" ng-model="user.submissionDate" md-open-on-focus ng-required="true"></md-datepicker>
+      </md-input-container>
+
+      <md-input-container class="md-block">
+        <label>Hour</label>
+        <input id="eventStartTime" type="time" ng-model="user.address" ng-required="true">
+      </md-input-container>
+    </div>
+
+    <div layout="row" flex>
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>End date</label>
+        <md-datepicker id="eventEndDate" ng-model="user.submissionDate" md-open-on-focus ng-required="true"></md-datepicker>
+      </md-input-container>
+
+      <md-input-container class="md-block">
+        <label>Hour</label>
+        <input  id="eventEndTime" type="time" ng-model="user.address" ng-required="true">
+      </md-input-container>
+    </div>
+
+    <!-- <div layout="row" flex>
+      <md-input-container flex class="md-icon-float md-block md-title">
+        <label>Add guest</label>
+        <input  ng-model="vm.event.name" ng-required="true">
+      </md-input-container>
+      <div>
+        <md-button class="md-fab">
+          <md-icon class="material-icons">add</md-icon>
+        </md-button>
+      </div>
+    </div> -->
+
+    <md-input-container class="md-block">
+      <label>Gest list</label>
+      <md-chips id="eventGuests"
+        ng-model="vm.guests"
+        md-separator-keys="vm.separatorKeys"
+        placeholder="Write and press return"
+        secondary-placeholder="Another name">
+      </md-chips>
+    </md-input-container>
+
+    <md-input-container class="md-block">
+      <label>Address</label>
+      <input id="eventAddress" ng-model="user.address" ng-required="true" autocomplete="address-line1">
+    </md-input-container>
+
+    <md-input-container md-no-float class="md-block">
+      <input id="eventAddress2" ng-model="user.address2" placeholder="Address 2" autocomplete="address-line2">
+    </md-input-container>
+
+    <div layout-gt-sm="row">
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>City</label>
+        <input id="eventCity" ng-model="user.city" ng-required="true" autocomplete="address-level2">
+      </md-input-container>
+
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>State</label>
+        <md-select id="eventState" ng-model="user.state">
+          <md-option ng-repeat="state in vm.states" value="{{state.abbrev}}">
+            {{state.name}}
+          </md-option>
+        </md-select>
+      </md-input-container>
+
+    </div>
+
+    <md-switch ng-model="vm.notifyGuests" aria-label="Notify guests">
+      Send notification for guests?
+    </md-switch>
+
+    <md-input-container class="md-block" ng-if="vm.notifyGuests">
+      <label>Notification</label>
+      <textarea id="eventGuestsNotification" ng-model="vm.event.notification"
+        md-maxlength="150" rows="5" md-select-on-focus>
+      </textarea>
+    </md-input-container>
+
+    <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+      <md-button class="md-raised md-primary">Create</md-button>
+      <md-button class="md-raised md-warn" ui-sref="home">Cancel</md-button>
+    </section>
+
+  </form>
+
+</div>
