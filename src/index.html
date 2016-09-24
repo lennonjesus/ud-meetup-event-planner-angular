@@ -29,47 +29,38 @@
 
 
   <body ng-app="eventplanner">
+    <div layout="column" layout-fill>
+      <md-toolbar class="md-hue-2">
+        <div class="md-toolbar-tools">
+          <md-button class="md-icon-button" aria-label="Settings" >
+            <a ui-sref="home">
+              <md-icon class="material-icons" >home</md-icon>
+            </a>
+          </md-button>
+          <h2>
+            <span>Event Planner</span>
+          </h2>
+          <span flex=""></span>
 
+          <md-button class="md-icon-button" aria-label="Create Account">
+            <a ui-sref="signup">
+              <md-icon md-font-icon="classname" >account_box</md-icon>
+            </a>
+          </md-button>
+          <md-button class="md-icon-button" aria-label="Create Event" ui-sref="event.create">
+            <md-icon md-font-icon="classname" >event</md-icon>
+          </md-button>
+          <md-button class="md-icon-button" aria-label="View Events" ui-sref="event.list">
+            <md-icon md-font-icon="classname" >view_list</md-icon>
+          </md-button>
+        </div>
+      </md-toolbar>
 
-
-    <div class="container">
-      <div layout="column" layout-fill>
-        <md-toolbar class="md-hue-2">
-          <div class="md-toolbar-tools">
-            <md-button class="md-icon-button" aria-label="Settings" >
-              <a ui-sref="home">
-                <md-icon class="material-icons" >home</md-icon>
-              </a>
-            </md-button>
-            <h2>
-              <span>Event Planner</span>
-            </h2>
-            <span flex=""></span>
-
-            <md-button class="md-icon-button" aria-label="Create Account">
-              <a ui-sref="signup">
-                <md-icon md-font-icon="classname" >account_box</md-icon>
-              </a>
-            </md-button>
-            <md-button class="md-icon-button" aria-label="Create Event" ui-sref="event">
-              <md-icon md-font-icon="classname" >event</md-icon>
-            </md-button>
-            <md-button class="md-icon-button" aria-label="View Events">
-              <md-icon md-font-icon="classname" >view_list</md-icon>
-            </md-button>
-          </div>
-        </md-toolbar>
-
-        <md-content layout-padding>
-          <ui-view />
-        </md-content>
-
-
-      </div>
+      <md-content layout-padding>
+        <ui-view />
+      </md-content>
     </div>
   </body>
-
-
 
   <!-- build:js({.tmp,src}) scripts/vendor.js -->
   <!-- bower:js -->
@@ -94,6 +85,4 @@
 
     // $.material.init();
   </script>
-
-
 </html>
