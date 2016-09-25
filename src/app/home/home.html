@@ -1,13 +1,17 @@
-<div>
-  <form name="userForm">
+<div ng-if="!loggedUser">
+  <form name="userForm" novalidate ng-submit="vm.login(userForm)">
 
-    <h2>Welcome to Event Planner</h2>
+    <md-toolbar >
+      Authentication
+    </md-toolbar>
+
+    <br />
 
     <div layout-gt-xs="row">
 
       <md-input-container class="md-block md-icon-float" flex-gt-sm>
         <label>E-mail</label>
-        <input ng-model="vm.user.email" ng-required="true">
+        <input ng-model="vm.user.email" ng-required="true" autofocus>
       </md-input-container>
 
       <md-input-container class="md-block" flex-gt-sm>
@@ -16,7 +20,7 @@
       </md-input-container>
 
       <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-        <md-button class="md-raised md-primary">
+        <md-button type="submit" class="md-raised md-primary" ng-disabled="userForm.$invalid">
           <md-icon class="material-icons">forward_next</md-icon>
           Login
         </md-button>
@@ -29,4 +33,16 @@
 
   </form>
 
+</div>
+
+<div layout-gt-xs="row" ng-if="loggedUser">
+
+  <md-toolbar >
+    Welcome, {{loggedUser.name}}!
+  </md-toolbar>
+
+  <md-button class="md-raised md-warn" ng-click="vm.logout()">
+    <md-icon class="material-icons">exit_to_app</md-icon>
+    Logout
+  </md-button>
 </div>

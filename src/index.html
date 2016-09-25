@@ -42,15 +42,10 @@
           </h2>
           <span flex=""></span>
 
-          <md-button class="md-icon-button" aria-label="Create Account">
-            <a ui-sref="signup">
-              <md-icon md-font-icon="classname" >account_box</md-icon>
-            </a>
-          </md-button>
-          <md-button class="md-icon-button" aria-label="Create Event" ui-sref="event.create">
+          <md-button class="md-icon-button" aria-label="Create Event" ui-sref="event.create" ng-if="loggedUser">
             <md-icon md-font-icon="classname" >event</md-icon>
           </md-button>
-          <md-button class="md-icon-button" aria-label="View Events" ui-sref="event.list">
+          <md-button class="md-icon-button" aria-label="View Events" ui-sref="event.list" ng-if="loggedUser">
             <md-icon md-font-icon="classname" >view_list</md-icon>
           </md-button>
         </div>

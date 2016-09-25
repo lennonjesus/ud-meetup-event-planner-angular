@@ -1,10 +1,16 @@
+<md-toolbar >
+  Sign up
+</md-toolbar>
+
+<br />
+
 <div>
   <form name="userForm" ng-submit="vm.createUser(userForm)" novalidate>
 
     <div layout-gt-xs="row">
       <md-input-container class="md-block" flex-gt-sm>
         <label>Name</label>
-        <input ng-model="vm.user.name" ng-required="true" autocomplete="name">
+        <input ng-model="vm.user.name" ng-required="true" autocomplete="name" md-autofocus>
         <div class="hint">Please, tell us your name</div>
       </md-input-container>
 

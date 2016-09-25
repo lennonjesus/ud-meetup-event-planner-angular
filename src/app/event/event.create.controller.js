@@ -3,9 +3,12 @@
 angular.module('eventplanner').controller('EventCreate', eventCreate);
 
 /** @ngInject */
-function eventCreate($mdConstant) {
-
+function eventCreate($mdConstant, $localForage, $rootScope, $mdToast) {
   var vm = this;
+
+  vm.event = {
+    guests: []
+  };
 
   vm.eventTypeList = [
     {value: 'birthday', label: 'Birthday'},
@@ -18,6 +21,7 @@ function eventCreate($mdConstant) {
   vm.guests = [];
 
   vm.states = [
+    {abbrev: 'BA', name: 'Bahia'},
     {abbrev: 'MG', name: 'Minas Gerais'},
     {abbrev: 'RJ', name: 'Rio de Janeiro'},
     {abbrev: 'SP', name: 'São Paulo'}
@@ -25,4 +29,25 @@ function eventCreate($mdConstant) {
 
   vm.separatorKeys = [$mdConstant.KEY_CODE.ENTER, $mdConstant.KEY_CODE.COMMA, /* semicolon = 186 */ 186];
 
+  vm.createEvent = createEvent;
+
+  function createEvent(form) {
+    //FIXME issue with localforage and date
+
+    if (form.$valid) {
+      $localForage.getItem('events').then(function (data) {
+        var events = data || [];
+
+        events.push(vm.event);
+
+        $localForage.setItem('events', events).then(function () {
+          $mdToast.show(
+            $mdToast.simple()
+            .textContent(vm.event.name + ' created!')
+            .hideDelay(3000)
+          );
+        });
+      });
+    }
+  }
 }

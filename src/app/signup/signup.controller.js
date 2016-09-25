@@ -5,7 +5,7 @@ angular
   .controller('Signup', signup);
 
 /** @ngInject */
-function signup($localForage, $rootScope) {
+function signup($localForage, $rootScope, $mdToast) {
   var vm = this;
 
   vm.createUser = createUser;
@@ -15,6 +15,11 @@ function signup($localForage, $rootScope) {
       $localForage.setItem('user', vm.user).then(function () {
         $localForage.getItem('user').then(function (data) {
           $rootScope.loggedUser = data;
+          $mdToast.show(
+            $mdToast.simple()
+            .textContent('Welcome, ' + data.name)
+            .hideDelay(3000)
+          );
         });
       });
     }

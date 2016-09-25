@@ -1,1 +1,9 @@
-<md-subheader >Not Sticky</md-subheader>
+<md-toolbar >
+  Event list
+</md-toolbar>
+
+<br />
+
+<li ng-repeat="event in vm.events">
+  {{event.name}}
+</li>
