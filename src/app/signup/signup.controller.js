@@ -4,14 +4,12 @@ angular
   .module('eventplanner')
   .controller('Signup', signup);
 
-  function signup() {
+function signup() {
+  var vm = this;
 
-    var vm = this;
+  vm.createUser = createUser;
 
-    vm.hello = 'Hello Sign!';
-
-
-
-
+  function createUser(form) {
 
   }
+}
