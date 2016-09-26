@@ -1,9 +1,33 @@
-<md-toolbar >
-  Event list
+<md-toolbar class="md-theme-light">
+  <h2 class="md-toolbar-tools">
+    <span>Events</span>
+  </h2>
 </md-toolbar>
 
 <br />
 
-<li ng-repeat="event in vm.events">
-  {{event.name}}
-</li>
+<md-content flex layout-padding>
+  <md-list>
+    <md-list-item class="md-3-line" ng-repeat="event in vm.events">
+      <div class="md-list-item-text">
+        <h3 >{{event.name}}</h3>
+        <h3>{{event.type}}, hosted by {{event.host}}</h3>
+        <p>
+          {{event.city}}, {{event.state}}
+        </p>
+        <p>
+          {{event.address}}
+        </p>
+        <p ng-if="event.address2">
+          {{event.address2}}
+        </p>
+        <md-chips ng-model="event.guests" readonly="true">
+          <md-chip-template>
+            {{$chip}}
+          </md-chip-template>
+        </md-chips>
+      </div>
+      <md-divider ng-if="!$last"></md-divider>
+    </md-list-item>
+  </md-list>
+</md-content>
