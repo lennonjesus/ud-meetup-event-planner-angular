@@ -38,6 +38,8 @@ function eventCreateController($mdConstant, $localForage, $rootScope, $mdToast) 
       $localForage.getItem('events').then(function (data) {
         var events = data || [];
 
+        vm.event.id = Date.now();
+
         events.push(vm.event);
 
         $localForage.setItem('events', events).then(function () {
