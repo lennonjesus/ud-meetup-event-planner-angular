@@ -11,7 +11,7 @@ function routesConfig($stateProvider) {
     .state('signup', {
       url: '/signup',
       templateUrl: 'app/signup/signup.html',
-      controller: 'Signup',
+      controller: 'SignupController',
       controllerAs: 'vm'
     });
 }

@@ -10,7 +10,7 @@ function routesConfig($stateProvider) {
     .state('home', {
       url: '/',
       templateUrl: 'app/home/home.html',
-      controller: 'Home',
+      controller: 'HomeController',
       controllerAs: 'vm'
     });
 }

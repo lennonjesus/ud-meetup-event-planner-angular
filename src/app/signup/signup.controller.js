@@ -2,10 +2,10 @@
 
 angular
   .module('eventplanner')
-  .controller('Signup', signup);
+  .controller('SignupController', signupController);
 
 /** @ngInject */
-function signup($localForage, $rootScope, $mdToast) {
+function signupController($localForage, $rootScope, $mdToast) {
   var vm = this;
 
   vm.createUser = createUser;

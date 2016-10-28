@@ -1,9 +1,9 @@
 'use strict';
 
-angular.module('eventplanner').controller('EventList', eventList);
+angular.module('eventplanner').controller('EventListController', eventListController);
 
 /** @ngInject */
-function eventList($localForage) {
+function eventListController($localForage) {
   var vm = this;
 
   vm.init = init;

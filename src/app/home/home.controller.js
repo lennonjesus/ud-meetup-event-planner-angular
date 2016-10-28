@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('eventplanner').controller('Home', homeController);
+angular.module('eventplanner').controller('HomeController', homeController);
 
 /** @ngInject */
 function homeController($localForage, $rootScope, $mdToast, $log) {

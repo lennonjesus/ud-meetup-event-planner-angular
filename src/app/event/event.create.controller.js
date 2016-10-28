@@ -1,9 +1,9 @@
 'use strict';
 
-angular.module('eventplanner').controller('EventCreate', eventCreate);
+angular.module('eventplanner').controller('EventCreateController', eventCreateController);
 
 /** @ngInject */
-function eventCreate($mdConstant, $localForage, $rootScope, $mdToast) {
+function eventCreateController($mdConstant, $localForage, $rootScope, $mdToast) {
   var vm = this;
 
   vm.event = {

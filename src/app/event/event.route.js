@@ -16,13 +16,13 @@ function routesConfig($stateProvider) {
     .state('event.list', {
       url: '/list',
       templateUrl: 'app/event/event.list.html',
-      controller: 'EventList',
+      controller: 'EventListController',
       controllerAs: 'vm'
     })
     .state('event.create', {
       url: '/create',
       templateUrl: 'app/event/event.form.html',
-      controller: 'EventCreate',
+      controller: 'EventCreateController',
       controllerAs: 'vm'
     });
 }
