@@ -10,7 +10,9 @@
   <md-list>
     <md-list-item class="md-3-line" ng-repeat="event in vm.events">
       <div class="md-list-item-text">
-        <h3 >{{event.name}}</h3>
+        <h3>
+          <a ui-sref="event.detail({id: event.id})">{{event.name}}</a>
+        </h3>
         <h3>{{event.type}}, hosted by {{event.host}}</h3>
         <p>
           {{event.city}}, {{event.state}}

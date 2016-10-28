@@ -1,0 +1,29 @@
+<div layout-gt-xs="row">
+  <md-toolbar >
+    {{vm.event.name}}
+  </md-toolbar>
+
+  <p>
+    {{vm.event.type}} hosted by {{vm.event.host}}
+  </p>
+  <p>
+    From: {{vm.event.startDate | date : 'dd/MM/yyyy'}} {{vm.event.startTime | date : 'HH:mm'}}
+  </p>
+  <p>
+    To: {{vm.event.endDate | date : 'dd/MM/yyyy'}} {{vm.event.endTime | date : 'HH:mm'}}
+  </p>
+  <p>
+    Guests:
+    <md-chips ng-model="vm.event.guests" readonly="true">
+      <md-chip-template>
+        {{$chip}}
+      </md-chip-template>
+    </md-chips>
+  </p>
+  <p>
+    {{vm.event.address}}, {{vm.event.city}}, {{vm.event.state}}
+  </p>
+  <p>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3681.0937865940105!2d-43.27494718439352!3d-22.687552335789878!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9973c193254263%3A0x3fb0ff85cd6293a1!2sAv.+das+Palmeiras%2C+1290+-+Jardim+Primavera%2C+Duque+de+Caxias+-+RJ!5e0!3m2!1spt-BR!2sbr!4v1477678601020" width="100%" height="300px" frameborder="0" style="border:0" allowfullscreen></iframe>
+  </p>
+</div>

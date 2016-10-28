@@ -19,6 +19,12 @@ function routesConfig($stateProvider) {
       controller: 'EventListController',
       controllerAs: 'vm'
     })
+    .state('event.detail', {
+      url: '/view/:id',
+      templateUrl: 'app/event/event.detail.html',
+      controller: 'EventDetailController',
+      controllerAs: 'vm'
+    })
     .state('event.create', {
       url: '/create',
       templateUrl: 'app/event/event.form.html',
