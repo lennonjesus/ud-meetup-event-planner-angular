@@ -3,8 +3,9 @@
 
   angular.module('eventplanner').controller('LogoutController', logoutController);
 
-  /** @ngInject */
   function logoutController($rootScope, $mdToast) {
+    "ngInject";
+
     var vm = this;
 
     vm.logout = logout;

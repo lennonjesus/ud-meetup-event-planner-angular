@@ -1,13 +1,12 @@
-'use strict';
+(function () {
+  'use strict';
 
-angular
-  .module('eventplanner')
-  .config(routesConfig);
+  angular.module('eventplanner').config(routesConfig);
 
-/** @ngInject */
-function routesConfig($stateProvider) {
+  function routesConfig($stateProvider) {
+    "ngInject";
 
-  $stateProvider
+    $stateProvider
     .state('event', {
       url: '/event',
       abstract: true,
@@ -31,4 +30,5 @@ function routesConfig($stateProvider) {
       controller: 'EventCreateController',
       controllerAs: 'vm'
     });
-}
+  }
+})();

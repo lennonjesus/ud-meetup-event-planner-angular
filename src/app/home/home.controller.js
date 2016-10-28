@@ -1,46 +1,49 @@
-'use strict';
+(function () {
+  'use strict';
 
-angular.module('eventplanner').controller('HomeController', homeController);
+  angular.module('eventplanner').controller('HomeController', homeController);
 
-/** @ngInject */
-function homeController($localForage, $rootScope, $mdToast, $log) {
-  var vm = this;
+  function homeController($localForage, $rootScope, $mdToast, $log) {
+    "ngInject";
 
-  vm.login = login;
+    var vm = this;
 
-  function login(form) {
-    if (form.$valid) {
-      $localForage.getItem('user').then(function (data) {
-        if (data) {
-          if (data.email === vm.user.email && data.password === vm.user.password) {
-            $rootScope.loggedUser = data;
-            $mdToast.show(
-              $mdToast.simple()
-              .textContent('Welcome, ' + data.name)
-              .hideDelay(3000)
-            );
+    vm.login = login;
+
+    function login(form) {
+      if (form.$valid) {
+        $localForage.getItem('user').then(function (data) {
+          if (data) {
+            if (data.email === vm.user.email && data.password === vm.user.password) {
+              $rootScope.loggedUser = data;
+              $mdToast.show(
+                $mdToast.simple()
+                .textContent('Welcome, ' + data.name)
+                .hideDelay(3000)
+              );
+            } else {
+              $mdToast.show(
+                $mdToast.simple()
+                .textContent('Invalid credentials!')
+                .hideDelay(3000)
+              );
+            }
           } else {
             $mdToast.show(
               $mdToast.simple()
-              .textContent('Invalid credentials!')
+              .textContent('No registered users.')
               .hideDelay(3000)
             );
           }
-        } else {
+        }).catch(function (error) {
           $mdToast.show(
             $mdToast.simple()
-            .textContent('No registered users.')
-            .hideDelay(3000)
-          );
-        }
-      }).catch(function (error) {
-        $mdToast.show(
-          $mdToast.simple()
             .textContent('Unexpected error: ' + error)
             .hideDelay(3000)
-        );
-        $log.error(error);
-      });
+          );
+          $log.error(error);
+        });
+      }
     }
   }
-}
+})();

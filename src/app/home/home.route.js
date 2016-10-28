@@ -1,16 +1,17 @@
-'use strict';
+(function () {
+  'use strict';
 
-angular
-  .module('eventplanner')
-  .config(routesConfig);
+  angular.module('eventplanner').config(routesConfig);
 
-/** @ngInject */
-function routesConfig($stateProvider) {
-  $stateProvider
+  function routesConfig($stateProvider) {
+    "ngInject";
+
+    $stateProvider
     .state('home', {
       url: '/',
       templateUrl: 'app/home/home.html',
       controller: 'HomeController',
       controllerAs: 'vm'
     });
-}
+  }
+})();

@@ -1,18 +1,21 @@
-'use strict';
+(function () {
+  'use strict';
 
-angular.module('eventplanner').controller('EventListController', eventListController);
+  angular.module('eventplanner').controller('EventListController', eventListController);
 
-/** @ngInject */
-function eventListController($localForage) {
-  var vm = this;
+  function eventListController($localForage) {
+    "ngInject";
 
-  vm.init = init;
+    var vm = this;
 
-  vm.init();
+    vm.init = init;
 
-  function init() {
-    $localForage.getItem('events').then(function (data) {
-      vm.events = data;
-    });
+    vm.init();
+
+    function init() {
+      $localForage.getItem('events').then(function (data) {
+        vm.events = data;
+      });
+    }
   }
-}
+})();

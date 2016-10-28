@@ -1,55 +1,58 @@
-'use strict';
+(function () {
+  'use strict';
 
-angular.module('eventplanner').controller('EventCreateController', eventCreateController);
+  angular.module('eventplanner').controller('EventCreateController', eventCreateController);
 
-/** @ngInject */
-function eventCreateController($mdConstant, $localForage, $rootScope, $mdToast) {
-  var vm = this;
+  function eventCreateController($mdConstant, $localForage, $rootScope, $mdToast) {
+    "ngInject";
 
-  vm.event = {
-    guests: []
-  };
+    var vm = this;
 
-  vm.eventTypeList = [
-    {value: 'birthday', label: 'Birthday'},
-    {value: 'conferenceTalk', label: 'Conference Talk'},
-    {value: 'party', label: 'Party'},
-    {value: 'show', label: 'Show'},
-    {value: 'wedding', label: 'Wedding'}
-  ];
+    vm.event = {
+      guests: []
+    };
 
-  vm.guests = [];
+    vm.eventTypeList = [
+      {value: 'birthday', label: 'Birthday'},
+      {value: 'conferenceTalk', label: 'Conference Talk'},
+      {value: 'party', label: 'Party'},
+      {value: 'show', label: 'Show'},
+      {value: 'wedding', label: 'Wedding'}
+    ];
 
-  vm.states = [
-    {abbrev: 'BA', name: 'Bahia'},
-    {abbrev: 'MG', name: 'Minas Gerais'},
-    {abbrev: 'RJ', name: 'Rio de Janeiro'},
-    {abbrev: 'SP', name: 'São Paulo'}
-  ];
+    vm.guests = [];
 
-  vm.separatorKeys = [$mdConstant.KEY_CODE.ENTER, $mdConstant.KEY_CODE.COMMA, /* semicolon = 186 */ 186];
+    vm.states = [
+      {abbrev: 'BA', name: 'Bahia'},
+      {abbrev: 'MG', name: 'Minas Gerais'},
+      {abbrev: 'RJ', name: 'Rio de Janeiro'},
+      {abbrev: 'SP', name: 'São Paulo'}
+    ];
 
-  vm.createEvent = createEvent;
+    vm.separatorKeys = [$mdConstant.KEY_CODE.ENTER, $mdConstant.KEY_CODE.COMMA, /* semicolon = 186 */ 186];
 
-  function createEvent(form) {
-    //FIXME issue with localforage and date
+    vm.createEvent = createEvent;
 
-    if (form.$valid) {
-      $localForage.getItem('events').then(function (data) {
-        var events = data || [];
+    function createEvent(form) {
+      //FIXME issue with localforage and date
 
-        vm.event.id = Date.now();
+      if (form.$valid) {
+        $localForage.getItem('events').then(function (data) {
+          var events = data || [];
 
-        events.push(vm.event);
+          vm.event.id = Date.now();
 
-        $localForage.setItem('events', events).then(function () {
-          $mdToast.show(
-            $mdToast.simple()
-            .textContent(vm.event.name + ' created!')
-            .hideDelay(3000)
-          );
+          events.push(vm.event);
+
+          $localForage.setItem('events', events).then(function () {
+            $mdToast.show(
+              $mdToast.simple()
+              .textContent(vm.event.name + ' created!')
+              .hideDelay(3000)
+            );
+          });
         });
-      });
+      }
     }
   }
-}
+})();
