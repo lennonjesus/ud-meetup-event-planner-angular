@@ -48,6 +48,9 @@
           <md-button class="md-icon-button" aria-label="View Events" ui-sref="event.list" ng-if="loggedUser">
             <md-icon md-font-icon="classname" >view_list</md-icon>
           </md-button>
+          <md-button class="md-icon-button md-warn" ng-click="vm.logout()" ng-if="loggedUser" ng-controller="LogoutController as vm">
+            <md-icon class="material-icons">exit_to_app</md-icon>
+          </md-button>
         </div>
       </md-toolbar>
 

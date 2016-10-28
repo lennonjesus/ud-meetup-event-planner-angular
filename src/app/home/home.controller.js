@@ -7,7 +7,6 @@ function homeController($localForage, $rootScope, $mdToast, $log) {
   var vm = this;
 
   vm.login = login;
-  vm.logout = logout;
 
   function login(form) {
     if (form.$valid) {
@@ -43,15 +42,5 @@ function homeController($localForage, $rootScope, $mdToast, $log) {
         $log.error(error);
       });
     }
-  }
-
-  function logout() {
-    $mdToast.show(
-      $mdToast.simple()
-        .textContent('See you later! o/')
-        .hideDelay(3000)
-    );
-
-    $rootScope.loggedUser = null;
   }
 }
