@@ -33,9 +33,21 @@
         <div class="hint">Please, confirm your password</div>
       </md-input-container>
 
-      <md-input-container class="md-block">
-        <label>About you</label>
-        <textarea id="aboutUser" ng-model="vm.user.about" md-maxlength="150" rows="4" md-select-on-focus></textarea>
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Employer</label>
+        <input ng-model="vm.user.employer" >
+        <div class="hint">Your employer</div>
+      </md-input-container>
+
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Job title</label>
+        <input ng-model="vm.user.jobTitle" >
+        <div class="hint">Your job title</div>
+      </md-input-container>
+
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Birthday</label>
+        <md-datepicker id="userBirthday" ng-model="vm.user.birthday" md-open-on-focus></md-datepicker>
       </md-input-container>
 
       <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
