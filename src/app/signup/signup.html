@@ -7,45 +7,45 @@
 <div>
   <form name="userForm" ng-submit="vm.createUser(userForm)" novalidate>
 
-    <div layout-gt-xs="row">
-      <md-input-container class="md-block" flex-gt-sm>
+    <md-content flex>
+      <md-input-container class="md-block">
         <label>Name</label>
         <input ng-model="vm.user.name" ng-required="true" autocomplete="name" autofocus>
         <div class="hint">Please, tell us your name</div>
       </md-input-container>
 
-      <md-input-container class="md-block md-icon-float" flex-gt-sm>
+      <md-input-container class="md-block md-icon-float">
         <label>E-mail</label>
         <input type="email" ng-model="vm.user.email" ng-required="true" autocomplete="email">
         <div class="hint">Ex: youemail@domain.com</div>
       </md-input-container>
 
-      <md-input-container class="md-block" flex-gt-sm>
+      <md-input-container class="md-block">
         <label>Password</label>
         <input type="password" ng-model="vm.user.password" ng-pattern="/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/" ng-required="true">
         <div class="hint">Minimum 8 digits, with numbers and letters</div>
       </md-input-container>
 
-      <md-input-container class="md-block" flex-gt-sm>
+      <md-input-container class="md-block">
         <label ng-show="vm.user.password === vm.user.repassword">Retype password</label>
         <label ng-hide="vm.user.password === vm.user.repassword" md-colors="{color: 'red'}">Retype password</label>
         <input id="retypePass" type="password" ng-model="vm.user.repassword" ng-required="true">
         <div class="hint">Please, confirm your password</div>
       </md-input-container>
 
-      <md-input-container class="md-block" flex-gt-sm>
+      <md-input-container class="md-block">
         <label>Employer</label>
         <input ng-model="vm.user.employer" >
         <div class="hint">Your employer</div>
       </md-input-container>
 
-      <md-input-container class="md-block" flex-gt-sm>
+      <md-input-container class="md-block">
         <label>Job title</label>
         <input ng-model="vm.user.jobTitle" >
         <div class="hint">Your job title</div>
       </md-input-container>
 
-      <md-input-container class="md-block" flex-gt-sm>
+      <md-input-container class="md-block">
         <label>Birthday</label>
         <md-datepicker id="userBirthday" ng-model="vm.user.birthday" md-open-on-focus></md-datepicker>
       </md-input-container>
@@ -54,7 +54,7 @@
         <md-button type="submit" class="md-raised md-primary" ng-disabled="userForm.$invalid || vm.user.password !== vm.user.repassword">Create</md-button>
         <md-button class="md-raised md-warn" ui-sref="home">Cancel</md-button>
       </section>
-    </div>
+    </md-content>
 
   </form>
 

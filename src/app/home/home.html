@@ -7,14 +7,14 @@
 
     <br />
 
-    <div layout-gt-xs="row">
+    <md-content flex>
 
-      <md-input-container class="md-block md-icon-float" flex-gt-sm>
+      <md-input-container class="md-block md-icon-float">
         <label>E-mail</label>
         <input ng-model="vm.user.email" ng-required="true" autofocus>
       </md-input-container>
 
-      <md-input-container class="md-block" flex-gt-sm>
+      <md-input-container class="md-block">
         <label>Password</label>
         <input type="password" ng-model="vm.user.password" ng-required="true">
       </md-input-container>
@@ -29,7 +29,7 @@
           Signup
         </md-button>
       </section>
-    </div>
+    </md-content>
 
   </form>
 
