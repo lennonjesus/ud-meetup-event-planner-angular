@@ -3,7 +3,7 @@
 
   angular.module('eventplanner').controller('LogoutController', logoutController);
 
-  function logoutController($rootScope, $mdToast) {
+  function logoutController($rootScope, $mdToast, $state) {
     "ngInject";
 
     var vm = this;
@@ -18,6 +18,8 @@
       );
 
       $rootScope.loggedUser = null;
+
+      $state.go('home');
     }
   }
 })();

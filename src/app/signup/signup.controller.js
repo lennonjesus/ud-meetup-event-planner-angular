@@ -3,7 +3,7 @@
 
   angular.module('eventplanner').controller('SignupController', signupController);
 
-  function signupController($localForage, $rootScope, $mdToast) {
+  function signupController($localForage, $rootScope, $mdToast, $state) {
     "ngInject";
 
     var vm = this;
@@ -20,6 +20,7 @@
               .textContent('Welcome, ' + data.name)
               .hideDelay(3000)
             );
+            $state.go('home');
           });
         });
       }

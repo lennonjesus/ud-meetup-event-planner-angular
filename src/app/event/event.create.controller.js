@@ -3,7 +3,7 @@
 
   angular.module('eventplanner').controller('EventCreateController', eventCreateController);
 
-  function eventCreateController($mdConstant, $localForage, $rootScope, $mdToast) {
+  function eventCreateController($mdConstant, $localForage, $rootScope, $mdToast, $state) {
     "ngInject";
 
     var vm = this;
@@ -50,6 +50,7 @@
               .textContent(vm.event.name + ' created!')
               .hideDelay(3000)
             );
+            $state.go('event.list');
           });
         });
       }
