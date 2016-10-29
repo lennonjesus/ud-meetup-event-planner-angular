@@ -75,7 +75,7 @@
 
       <md-input-container class="md-block">
         <label>State</label>
-        <md-select id="eventState" ng-model="vm.event.state" autocomplete="address-level1">
+        <md-select id="eventState" ng-model="vm.event.state" ng-required="true" autocomplete="address-level1">
           <md-option ng-repeat="state in vm.states" value="{{state.abbrev}}">
             {{state.name}}
           </md-option>
