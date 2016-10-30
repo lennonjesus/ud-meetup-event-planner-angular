@@ -31,25 +31,43 @@
         <div class="hint" md-colors="{color: 'green'}" ng-if="userForm.inputEmail.$viewValue && !userForm.inputEmail.$error.email">
           The e-mail <strong>{{userForm.inputEmail.$viewValue}}</strong> is perfect!
         </div>
-
-        <!-- <div class="hint" md-colors="{color: 'red'}">
-          {{userForm.inputEmail.$error.email ? userForm.inputEmail.$viewValue + ' is invalid!' : ''}}
-        </div> -->
       </md-input-container>
 
       <md-input-container class="md-block">
         <label>Password</label>
-        <input type="password" ng-model="vm.user.password" ng-required="true" whatch-change="vm.validatePassword()"
+        <input type="password" ng-model="vm.user.password" ng-required="true" name="inputPassword"
           ng-pattern="/^(?:(?=.*[a-z])(?:(?=.*[A-Z])(?=.*[\d\W])|(?=.*\W)(?=.*\d))|(?=.*\W)(?=.*[A-Z])(?=.*\d)).{8,}$/">
-        <!-- <div class="hint">Minimum 8 digits, with numbers and letters. Symbols allowed.</div> -->
-        <div class="hint">{{vm.blah}}</div>
+
+        <div class="hint" ng-if="!vm.user.password && !userForm.inputPassword.$viewValue">
+          Minimum 8 digits, with numbers, letters and symbols.
+        </div>
+
+        <div class="hint" md-colors="{color: 'red'}" ng-if="userForm.inputPassword.$viewValue && userForm.inputPassword.$invalid">
+          <strong>Must have</strong> minimum 8 digits, with numbers, letters and symbols
+        </div>
+
+        <div class="hint" md-colors="{color: 'green'}" ng-if="userForm.inputPassword.$viewValue && userForm.inputPassword.$valid">
+          This password is good!
+        </div>
       </md-input-container>
 
       <md-input-container class="md-block">
         <label ng-show="vm.user.password === vm.user.repassword">Retype password</label>
         <label ng-hide="vm.user.password === vm.user.repassword" md-colors="{color: 'red'}">Retype password</label>
-        <input id="retypePass" type="password" ng-model="vm.user.repassword" ng-required="true">
-        <div class="hint">Please, confirm your password</div>
+        <input id="retypePass" type="password" ng-model="vm.user.repassword"
+          name="inputRetypePassword" ng-required="true">
+
+        <div class="hint" ng-if="!vm.user.repassword && !userForm.inputRetypePassword.$viewValue">
+          Please, confirm your password
+        </div>
+
+        <div class="hint" md-colors="{color: 'red'}" ng-if="userForm.inputPassword.$viewValue !== userForm.inputRetypePassword.$viewValue">
+          Passwords don't match!
+        </div>
+
+        <div class="hint" md-colors="{color: 'green'}" ng-if="userForm.inputRetypePassword.$viewValue && userForm.inputPassword.$viewValue === userForm.inputRetypePassword.$viewValue">
+          Passwords match!
+        </div>
       </md-input-container>
 
       <md-input-container class="md-block">
