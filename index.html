@@ -1,20 +1,20 @@
 <!doctype html>
 <html>
   <head>
-    <base href="/ud-meetup-event-planner-angular/">
+    <base href="/">
     <meta charset="utf-8">
     <title>Event Planner</title>
     <meta name="description" content="">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="icon" type="image/png" href="http://fountainjs.io/assets/imgs/fountain.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="http://fountainjs.io/assets/imgs/fountain.png" />
 
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
 
-    <link rel="stylesheet" href="styles/vendor-4348d43098.css">
+    <link rel="stylesheet" href="styles/vendor-b9fb953115.css">
 
     <link rel="stylesheet" href="styles/app-4d8e99bbae.css">
   </head>
@@ -24,9 +24,9 @@
     <div layout="column" layout-fill>
       <md-toolbar class="md-hue-2">
         <div class="md-toolbar-tools">
-          <md-button class="md-icon-button" aria-label="Settings">
+          <md-button class="md-icon-button" aria-label="Settings" >
             <a ui-sref="home">
-              <md-icon class="material-icons">home</md-icon>
+              <md-icon class="material-icons" >home</md-icon>
             </a>
           </md-button>
           <h2>
@@ -35,10 +35,10 @@
           <span flex=""></span>
 
           <md-button class="md-icon-button" aria-label="Create Event" ui-sref="event.create" ng-if="loggedUser">
-            <md-icon md-font-icon="classname">event</md-icon>
+            <md-icon md-font-icon="classname" >event</md-icon>
           </md-button>
           <md-button class="md-icon-button" aria-label="View Events" ui-sref="event.list" ng-if="loggedUser">
-            <md-icon md-font-icon="classname">view_list</md-icon>
+            <md-icon md-font-icon="classname" >view_list</md-icon>
           </md-button>
           <md-button class="md-icon-button md-warn" ng-click="vm.logout()" ng-if="loggedUser" ng-controller="LogoutController as vm">
             <md-icon class="material-icons">exit_to_app</md-icon>
@@ -47,14 +47,14 @@
       </md-toolbar>
 
       <md-content layout-padding>
-        <ui-view>
+        <ui-view />
       </md-content>
     </div>
   </body>
 
-  <script src="scripts/vendor-f4b8d611f5.js"></script>
+  <script src="scripts/vendor-1f84c6f110.js"></script>
 
-  <script src="scripts/app-a880c13dd6.js"></script>
+  <script src="scripts/app-e439cb92c1.js"></script>
 
   <script type="text/javascript">
 
