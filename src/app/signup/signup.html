@@ -10,20 +10,39 @@
     <md-content flex>
       <md-input-container class="md-block">
         <label>Name</label>
-        <input ng-model="vm.user.name" ng-required="true" autocomplete="name" autofocus>
+        <input ng-model="vm.user.name" ng-required="true" autocomplete="name" autofocus id="inputName">
         <div class="hint">Please, tell us your name</div>
       </md-input-container>
 
+      <script>$(document).trigger('autofocus_ready');</script>
+
       <md-input-container class="md-block md-icon-float">
         <label>E-mail</label>
-        <input type="email" ng-model="vm.user.email" ng-required="true" autocomplete="email">
-        <div class="hint">Ex: youemail@domain.com</div>
+        <input type="email" ng-model="vm.user.email" ng-required="true" autocomplete="email" name="inputEmail">
+
+        <div class="hint" ng-if="!vm.user.email && !userForm.inputEmail.$viewValue">
+          Ex: youemail@domain.com
+        </div>
+
+        <div class="hint" md-colors="{color: 'red'}" ng-if="userForm.inputEmail.$error.email">
+          The e-mail <strong>{{userForm.inputEmail.$viewValue}}</strong> is invalid!
+        </div>
+
+        <div class="hint" md-colors="{color: 'green'}" ng-if="userForm.inputEmail.$viewValue && !userForm.inputEmail.$error.email">
+          The e-mail <strong>{{userForm.inputEmail.$viewValue}}</strong> is perfect!
+        </div>
+
+        <!-- <div class="hint" md-colors="{color: 'red'}">
+          {{userForm.inputEmail.$error.email ? userForm.inputEmail.$viewValue + ' is invalid!' : ''}}
+        </div> -->
       </md-input-container>
 
       <md-input-container class="md-block">
         <label>Password</label>
-        <input type="password" ng-model="vm.user.password" ng-pattern="/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/" ng-required="true">
-        <div class="hint">Minimum 8 digits, with numbers and letters</div>
+        <input type="password" ng-model="vm.user.password" ng-required="true" whatch-change="vm.validatePassword()"
+          ng-pattern="/^(?:(?=.*[a-z])(?:(?=.*[A-Z])(?=.*[\d\W])|(?=.*\W)(?=.*\d))|(?=.*\W)(?=.*[A-Z])(?=.*\d)).{8,}$/">
+        <!-- <div class="hint">Minimum 8 digits, with numbers and letters. Symbols allowed.</div> -->
+        <div class="hint">{{vm.blah}}</div>
       </md-input-container>
 
       <md-input-container class="md-block">
