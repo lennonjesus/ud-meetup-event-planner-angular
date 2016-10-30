@@ -3,12 +3,21 @@
 
   angular.module('eventplanner').controller('HomeController', homeController);
 
-  function homeController($localForage, $rootScope, $mdToast, $log) {
+  function homeController($localForage, $rootScope, $mdToast, $log, $timeout) {
     "ngInject";
 
     var vm = this;
 
+    vm.init = init;
     vm.login = login;
+
+    vm.init();
+
+    function init() {
+      $timeout(function () {
+        angular.element('#inputEmail').focus();
+      }, 300);
+    }
 
     function login(form) {
       if (form.$valid) {

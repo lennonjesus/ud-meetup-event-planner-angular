@@ -3,7 +3,7 @@
 
   angular.module('eventplanner').controller('EventCreateController', eventCreateController);
 
-  function eventCreateController($mdConstant, $localForage, $rootScope, $mdToast, $state) {
+  function eventCreateController($mdConstant, $localForage, $rootScope, $mdToast, $state, $timeout) {
     "ngInject";
 
     var vm = this;
@@ -38,6 +38,9 @@
 
     function init() {
       vm.minDate = new Date();
+      $timeout(function () {
+        angular.element('#inputEventName').focus();
+      }, 300);
     }
 
     function createEvent(form) {
