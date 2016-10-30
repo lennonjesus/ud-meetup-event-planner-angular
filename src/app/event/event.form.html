@@ -1,5 +1,5 @@
 <md-toolbar >
-  Event creation {{vm.event.startTime}}
+  Event creation
 </md-toolbar>
 
 <br />
@@ -33,27 +33,19 @@
       <div class="hint">Who is the event host?</div>
     </md-input-container>
 
-    <div layout="row" flex>
-      <md-input-container class="md-block">
+    <div class="range layout-column flex-gt-md-30">
+      <md-input-container class="md-input-has-placeholder">
         <label>Start date</label>
-        <md-datepicker id="eventStartDate" ng-model="vm.event.startDate" md-open-on-focus ng-required="true"></md-datepicker>
+        <input mdc-datetime-picker="" date="true" time="true" type="text"
+          min-date="vm.minDate" max-date="vm.event.endDate"
+          ng-model="vm.event.startDate" class=" md-input" id="input_0">
       </md-input-container>
 
-      <md-input-container class="md-block">
-        <label>Hour</label>
-        <input id="eventStartTime" type="time" ng-model="vm.event.startTime" ng-required="true">
-      </md-input-container>
-    </div>
-
-    <div layout="row" flex>
-      <md-input-container class="md-block">
+      <md-input-container class="md-input-has-placeholder">
         <label>End date</label>
-        <md-datepicker id="eventEndDate" ng-model="vm.event.endDate" md-open-on-focus ng-required="true"></md-datepicker>
-      </md-input-container>
-
-      <md-input-container class="md-block">
-        <label>Hour</label>
-        <input  id="eventEndTime" type="time" ng-model="vm.event.endTime" ng-required="true">
+        <input mdc-datetime-picker="" date="true" time="true" type="text"
+          min-date="vm.minDate"="vm.event.startDate"="vm.event.endDate"
+          ng-model="vm.event.endDate" class=" md-input" id="input_1">
       </md-input-container>
     </div>
 

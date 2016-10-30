@@ -31,10 +31,17 @@
 
     vm.separatorKeys = [$mdConstant.KEY_CODE.ENTER, $mdConstant.KEY_CODE.COMMA, /* semicolon = 186 */ 186];
 
+    vm.init = init;
     vm.createEvent = createEvent;
 
+    vm.init();
+
+    function init() {
+      vm.minDate = new Date();
+    }
+
     function createEvent(form) {
-      //FIXME issue with localforage and date
+      // FIXME issue with localforage and date
 
       if (form.$valid) {
         $localForage.getItem('events').then(function (data) {

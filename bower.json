@@ -7,7 +7,8 @@
     "localforage": "^1.4.2",
     "moment": "momentjs#^2.15.0",
     "angular-material": "^1.1.1",
-    "angular-localforage": "^1.3.1"
+    "angular-localforage": "^1.3.1",
+    "angular-material-datetimepicker": "^1.4.0"
   },
   "devDependencies": {
     "angular-mocks": "^1.5.0"
